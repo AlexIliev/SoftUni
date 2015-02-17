@@ -1,0 +1,6 @@
+C:\Alex\Programming\OOP\OOP януари 2015\Homeworks\Homework Common Type System\HomeworkCommonTypeSystem\Customer\bin\Debug\Customer.exe.config
+C:\Alex\Programming\OOP\OOP януари 2015\Homeworks\Homework Common Type System\HomeworkCommonTypeSystem\Customer\bin\Debug\Customer.exe
+C:\Alex\Programming\OOP\OOP януари 2015\Homeworks\Homework Common Type System\HomeworkCommonTypeSystem\Customer\bin\Debug\Customer.pdb
+C:\Alex\Programming\OOP\OOP януари 2015\Homeworks\Homework Common Type System\HomeworkCommonTypeSystem\Customer\obj\Debug\Customer.csprojResolveAssemblyReference.cache
+C:\Alex\Programming\OOP\OOP януари 2015\Homeworks\Homework Common Type System\HomeworkCommonTypeSystem\Customer\obj\Debug\Customer.exe
+C:\Alex\Programming\OOP\OOP януари 2015\Homeworks\Homework Common Type System\HomeworkCommonTypeSystem\Customer\obj\Debug\Customer.pdb
