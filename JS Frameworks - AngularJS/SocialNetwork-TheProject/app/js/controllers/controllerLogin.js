@@ -1,7 +1,8 @@
 'use strict';
 
-socialNetworkApp.controller('controllerLogin',
-    ['$scope', '$route', '$timeout', 'userData', function ($scope, $route, $timeout, userData) {
+socialNetworkBaseApp.controller('controllerLogin',
+    ['$scope', '$route', '$timeout', 'userData','authenticationData',
+        function ($scope, $route, $timeout, userData, authenticationData) {
         $scope.rememberMe = false;
         $scope.login = login;
 
@@ -11,9 +12,9 @@ socialNetworkApp.controller('controllerLogin',
                 .then(function (data) {
                     $scope.user = {};
                     if ($scope.rememberMe) {
-                        $scope.$storage = credentials.saveInLocalStorage(data.access_token, data.token_type);
+                        $scope.$storage = authenticationData.saveInLocalStorage(data.access_token, data.token_type);
                     } else {
-                        $scope.$storage = credentials.saveInSessionStorage(data.access_token, data.token_type);
+                        $scope.$storage = authenticationData.saveInSessionStorage(data.access_token, data.token_type);
                     }
                     $scope.loginForm.$setPristine();
                 }, function (error) {

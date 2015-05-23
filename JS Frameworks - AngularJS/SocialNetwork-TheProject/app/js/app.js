@@ -16,7 +16,7 @@ var socialNetworkBaseApp = angular
             })
     })
     .value('user', {
-        username: '',
-        name: ''
+        "username": '',
+        "name": ''
     })
     .constant('baseUrl', 'http://softuni-social-network.azurewebsites.net/api/');

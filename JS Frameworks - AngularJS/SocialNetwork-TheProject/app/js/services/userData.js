@@ -1,19 +1,20 @@
 'use strict';
 
-socialNetworkApp.factory('userData', ['$resource', 'baseUrl', function ($resource, baseUrl) {
+socialNetworkBaseApp.factory('userData', ['$resource', 'baseUrl','authenticationData',
+    function ($resource, baseUrl, authenticationData) {
     function loginUser(user) {
-        return $resource(baseUrl + 'users/login')
+        return $resource(baseUrl + 'users/Login')
             .save(user);
     }
 
     function registerUser(user) {
-        return $resource(baseUrl + 'users/register')
+        return $resource(baseUrl + 'users/Register')
             .save(user);
     }
 
     function logoutUser() {
         return $resource(
-            baseUrl + 'users/logout')
+            baseUrl + 'users/Logout')
             .save();
     }
 

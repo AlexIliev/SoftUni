@@ -1,5 +1,6 @@
 'use strict';
 
-socialNetworkBaseApp.controller('controllerHome', ['$scope', function($scope){
-    $scope.isUserLogged = false;
+socialNetworkBaseApp.controller('controllerHome',
+    ['$scope','authenticationData', function($scope, authenticationData){
+    $scope.isUserLogged = authenticationData.checkForSessionToken();
 }])

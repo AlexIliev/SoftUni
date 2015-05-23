@@ -1,0 +1,4 @@
+<div ng-controller="controllerHome">
+    <div ng-include="'templatesHTML/guest/guestPage.html'" ng-if="!isUserLogged"></div>
+    <div ng-include="'templatesHTML/user/homeUser.html'" ng-if="isUserLogged"></div>
+</div>
