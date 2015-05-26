@@ -1,0 +1,14 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    margin-bottom: 60px;
+}
+
+a {
+    color: black;
+}
+form {
+    background-color: #1b8dbb;
+}

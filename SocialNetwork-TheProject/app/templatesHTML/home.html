@@ -1,0 +1,5 @@
+<header ng-include="'templatesHTML/guest/headerGuest.html'" ng-if="!isLogged"></header>
+<header ng-include="'templatesHTML/user/headerUser.html'" ng-if="isLogged"></header>
+
+<div ng-include="'templatesHTML/guest/homeGuest.html'" ng-if="!isLogged"></div>
+<div ng-include="'templatesHTML/user/homeUser.html'" ng-if="isLogged"></div>
