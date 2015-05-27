@@ -30,17 +30,6 @@ var appSocialNetwork = angular
                 //    }
                 //}
             })
-            .when('/user/wall', {
-                templateUrl: 'templatesHTML/user/homeUser.html',
-                controller: 'controllerUserWall'
-                //resolve:{
-                //    isLogged: function($location, $sessionStorage, $localStorage){
-                //        if(!$sessionStorage.authorization && !$localStorage.authorization){
-                //            $location.path('/');
-                //        }
-                //    }
-                //}
-            })
             .otherwise({
                 redirectTo: '/'
             })

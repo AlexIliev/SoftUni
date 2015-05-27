@@ -11,13 +11,13 @@
             <div class="form-group">
                 <label for="loginUsername" class="col-md-3 control-label">Username</label>
                 <div class="col-md-9">
-                    <input type="text" class="form-control" id="loginUsername" ng-model="user.username" placeholder="Username">
+                    <input type="text" class="form-control" id="loginUsername" ng-model="userLogin.username" placeholder="Username">
                 </div>
             </div>
             <div class="form-group">
                 <label for="loginPassword" class="col-md-3 control-label">Password</label>
                 <div class="col-md-9">
-                    <input type="password" class="form-control" id="loginPassword" ng-model="user.password" placeholder="Password">
+                    <input type="password" class="form-control" id="loginPassword" ng-model="userLogin.password" placeholder="Password">
                     <div class="checkbox">
                         <label>
                             <input type="checkbox" ng-model="rememberMe"> Remember me
@@ -28,7 +28,7 @@
             <div class="form-group">
                 <div class="col-md-9 col-md-offset-3">
                     <button type="reset" class="btn btn-default">Cancel</button>
-                    <button type="submit" class="btn btn-primary" ng-click="loginUser(user)">Login</button>
+                    <button type="submit" class="btn btn-primary" ng-click="loginUser(userLogin)">Login</button>
                 </div>
             </div>
         </fieldset>

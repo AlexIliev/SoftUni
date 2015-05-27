@@ -3,6 +3,8 @@
 appSocialNetwork.controller('controllerLogin',
     ['$scope', '$location', '$route', 'userData', 'authenticationData', 'notificationService',
         function ($scope, $location, $route, userData, authenticationData, notificationService) {
+
+
             $scope.rememberMe = false;
             $scope.loginUser = login;
 
@@ -12,7 +14,7 @@ appSocialNetwork.controller('controllerLogin',
                     .then(function (userDataResponse){
                         if($scope.rememberMe){
                             $scope.$storage = authenticationData.saveTokenInLocalStorage
-                                (userDataResponse.access_token, userDataResponse.token_type);
+                            (userDataResponse.access_token, userDataResponse.token_type);
                         } else {
                             $scope.$storage = authenticationData.saveTokenInSessionStorage
                             (userDataResponse.access_token, userDataResponse.token_type);
@@ -31,7 +33,7 @@ appSocialNetwork.controller('controllerLogin',
                             });
                     },
                     function (error) {
-                    notificationService.error('Login Error!');
-                });
+                        notificationService.error('Login Error!');
+                    });
             }
-    }]);
+        }]);

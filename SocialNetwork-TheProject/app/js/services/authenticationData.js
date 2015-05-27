@@ -34,6 +34,10 @@ appSocialNetwork.service('authenticationData', ['$sessionStorage', '$localStorag
             });
         }
 
+        function getCurrentUser(user) {
+            return $localStorage.currentUser;
+        }
+
         function clearStorages() {
             $localStorage.$reset();
             $sessionStorage.$reset();
@@ -45,6 +49,7 @@ appSocialNetwork.service('authenticationData', ['$sessionStorage', '$localStorag
             checkIsUserLogged: checkIsUserLogged,
             getAuthorization: getAuthorization,
             saveCurrentUser: saveCurrentUser,
+            getCurrentUser: getCurrentUser,
             clearStorages: clearStorages
         }
 }]);

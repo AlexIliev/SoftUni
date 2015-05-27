@@ -17,7 +17,7 @@ appSocialNetwork.controller('controllerRegister',
                             .then(function (currentUserData) {
                                 authenticationData.saveCurrentUser(currentUserData);
                                 notificationService.success('Register successful!');
-                                $location.path('/user/wall');
+                                $location.path('/');
                                 $route.reload();
                             }, function (error) {
                                 notificationService.success('Register error!');
