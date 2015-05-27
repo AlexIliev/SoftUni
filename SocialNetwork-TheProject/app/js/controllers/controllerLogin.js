@@ -17,11 +17,21 @@ appSocialNetwork.controller('controllerLogin',
                             $scope.$storage = authenticationData.saveTokenInSessionStorage
                             (userDataResponse.access_token, userDataResponse.token_type);
                         }
-
-
-                    }, function (error) {
+                        userData.getCurrentUserData()
+                            .$promise
+                            .then(function (currentUserData) {
+                                authenticationData.saveCurrentUser(currentUserData);
+                                notificationService.success('Login successful!');
+                                $location.path('/user/wall');
+                                $route.reload();
+                            }, function (error) {
+                                notificationService.success('Login error!');
+                                authenticationData.deleteCredentials();
+                                $route.reload();
+                            });
+                    },
+                    function (error) {
                     notificationService.error('Login Error!');
                 });
-
             }
     }]);

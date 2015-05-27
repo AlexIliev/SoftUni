@@ -27,10 +27,24 @@ appSocialNetwork.service('authenticationData', ['$sessionStorage', '$localStorag
             }
         }
 
+
+        function saveCurrentUser(user) {
+            $localStorage.$default({
+                'currentUser': user
+            });
+        }
+
+        function clearStorages() {
+            $localStorage.$reset();
+            $sessionStorage.$reset();
+        }
+
         return {
             saveTokenInLocalStorage: saveTokenInLocalStorage,
             saveTokenInSessionStorage: saveTokenInSessionStorage,
             checkIsUserLogged: checkIsUserLogged,
-            getAuthorization: getAuthorization
+            getAuthorization: getAuthorization,
+            saveCurrentUser: saveCurrentUser,
+            clearStorages: clearStorages
         }
 }]);

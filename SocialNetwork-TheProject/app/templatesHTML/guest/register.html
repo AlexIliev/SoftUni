@@ -1,7 +1,7 @@
 <header ng-include="'templatesHTML/guest/headerGuest.html'"></header>
 
-<div class="col-md-5" ng-controller="RegisterController">
-    <form name="registerForm" class="form-horizontal" autocomplete="off">
+<div class="col-md-6 col-md-offset-1">
+    <form name="registerForm" class="form-horizontal col-md-10" autocomplete="off">
         <fieldset>
             <div class="row">
                 <div class="col-md-6 col-md-offset-3">
@@ -59,7 +59,7 @@
             <div class="form-group">
                 <div class="col-md-9 col-lg-offset-3">
                     <button type="reset" class="btn btn-default">Cancel</button>
-                    <button type="submit" class="btn btn-primary" ng-click="register(user, registerForm)">Register</button>
+                    <button type="submit" class="btn btn-primary" ng-click="registerUser(user)">Register</button>
                 </div>
             </div>
         </fieldset>

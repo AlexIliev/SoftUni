@@ -13,7 +13,7 @@ appSocialNetwork.factory('userData', ['$resource', 'baseUrl', 'authenticationDat
             .save(userDataInput);
     }
 
-    function getUserData() {
+    function getCurrentUserData() {
         var authorization = authenticationData.getAuthorization();
         return $resource(
             baseUrl + 'me',
@@ -30,6 +30,6 @@ appSocialNetwork.factory('userData', ['$resource', 'baseUrl', 'authenticationDat
     return {
         loginRequest: loginUserRequest,
         registerRequest: registerUserRequest,
-        getUserData: getUserData
+        getCurrentUserData: getCurrentUserData
     }
 }]);
