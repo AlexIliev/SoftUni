@@ -27,9 +27,39 @@ appSocialNetwork.factory('userData', ['$resource', 'baseUrl', 'authenticationDat
             .get();
     }
 
+    function logoutCurrentUser(){
+        var authorization = authenticationData.getAuthorization();
+        return $resource(
+            baseUrl + 'users/logout',
+            null,
+            {
+                'save': {
+                    method: 'POST',
+                    headers: {'Authorization': authorization}
+                }
+            })
+            .save();
+    }
+
+    function editCurrentUser(user) {
+        var authorization = authenticationData.getAuthorization();
+        return $resource(
+            baseUrl + 'me',
+            null,
+            {
+                'put': {
+                    method: 'PUT',
+                    headers: {'Authorization': authorization}
+                }
+            })
+            .put(user);
+    }
+
     return {
         loginRequest: loginUserRequest,
         registerRequest: registerUserRequest,
-        getCurrentUserData: getCurrentUserData
+        getCurrentUserData: getCurrentUserData,
+        editCurrentUser: editCurrentUser,
+        logoutCurrentUser: logoutCurrentUser
     }
 }]);

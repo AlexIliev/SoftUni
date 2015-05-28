@@ -30,6 +30,17 @@ var appSocialNetwork = angular
                 //    }
                 //}
             })
+            .when('/user/editprofile', {
+                templateUrl: 'templatesHTML/user/editUser.html',
+                controller: 'controllerEditUser'
+                //resolve:{
+                //    isLogged: function($location, $sessionStorage, $localStorage){
+                //        if(!$sessionStorage.authorization && !$localStorage.authorization){
+                //            $location.path('/');
+                //        }
+                //    }
+                //}
+            })
             .otherwise({
                 redirectTo: '/'
             })
