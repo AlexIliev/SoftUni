@@ -55,11 +55,26 @@ appSocialNetwork.factory('userData', ['$resource', 'baseUrl', 'authenticationDat
             .put(user);
     }
 
+    function changeUserPassword(userPassword) {
+        var authorization = authenticationData.getAuthorization();
+        return $resource(
+            baseUrl + 'me/changepassword',
+            null,
+            {
+                'put': {
+                    method: 'PUT',
+                    headers: {'Authorization': authorization}
+                }
+            })
+            .put(userPassword);
+    }
+
     return {
         loginRequest: loginUserRequest,
         registerRequest: registerUserRequest,
         getCurrentUserData: getCurrentUserData,
         editCurrentUser: editCurrentUser,
-        logoutCurrentUser: logoutCurrentUser
+        logoutCurrentUser: logoutCurrentUser,
+        changeUserPassword: changeUserPassword
     }
 }]);

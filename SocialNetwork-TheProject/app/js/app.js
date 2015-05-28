@@ -41,6 +41,17 @@ var appSocialNetwork = angular
                 //    }
                 //}
             })
+            .when('/user/editpassword', {
+                templateUrl: 'templatesHTML/user/editPassword.html',
+                controller: 'controllerEditPassword'
+                //resolve:{
+                //    isLogged: function($location, $sessionStorage, $localStorage){
+                //        if(!$sessionStorage.authorization && !$localStorage.authorization){
+                //            $location.path('/');
+                //        }
+                //    }
+                //}
+            })
             .otherwise({
                 redirectTo: '/'
             })
