@@ -1,0 +1,12 @@
+<ul id="search-results" class="list-group">
+    <li class="list-group-item" ng-repeat="userResult in searchedResults">
+        <a href="#/users/{{searchedResults.username}}" class="list-group-item">
+            <img class="img-thumbnail" src="" ng-src="{{userResult.profileImageData}}" alt="{{userResult.name}}" ng-if="userResult.profileImageData"/>
+            <img class="img-thumbnail" src="" ng-src="{{defaultProfileImageData}}" alt="{{userResult.name}}" ng-if="!userResult.profileImageData"/>
+            <span class="list-group-item-heading">{{userResult.name}}</span>
+        </a>
+    </li>
+    <li class="list-group-item">
+        <p><span class="badge">{{searchedResultsLength}}</span> results total</p>
+    </li>
+</ul>

@@ -69,12 +69,28 @@ appSocialNetwork.factory('userData', ['$resource', 'baseUrl', 'authenticationDat
             .put(userPassword);
     }
 
+    function searchUsersByName(searchedName) {
+        var authorization = authenticationData.getAuthorization();
+        return $resource(
+            baseUrl + 'users/search?searchTerm=' + searchedName,
+            null,
+            {
+                'get': {
+                    method: 'GET',
+                    isArray: true,
+                    headers: {'Authorization': authorization}
+                }
+            })
+            .get();
+    }
+
     return {
         loginRequest: loginUserRequest,
         registerRequest: registerUserRequest,
         getCurrentUserData: getCurrentUserData,
         editCurrentUser: editCurrentUser,
         logoutCurrentUser: logoutCurrentUser,
-        changeUserPassword: changeUserPassword
+        changeUserPassword: changeUserPassword,
+        searchUsersByName: searchUsersByName
     }
 }]);

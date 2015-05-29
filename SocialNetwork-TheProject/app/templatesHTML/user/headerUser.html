@@ -27,8 +27,8 @@
             </ul>
             <form id="search" class="navbar-form navbar-left" role="search">
                 <div class="form-group">
-                    <input type="text" class="form-control" ng-model="searchTerm" ng-change="searchUsers(searchTerm)" placeholder="Search users">
-                    <div users-search-results ng-if="searchResultsShown"></div>
+                    <input type="text" class="form-control" ng-model="searchInput" ng-change="searchUsers(searchInput)" placeholder="Search users">
+                    <div search-results ng-if="searchResultsShown"></div>
                 </div>
             </form>
         </div>
