@@ -84,6 +84,34 @@ appSocialNetwork.factory('userData', ['$resource', 'baseUrl', 'authenticationDat
             .get();
     }
 
+    function getUserFullData(username) {
+        var authorization = authenticationData.getAuthorization();
+        return $resource(
+            baseUrl + 'users/' + username,
+            null,
+            {
+                'get': {
+                    method: 'GET',
+                    headers: {'Authorization': authorization}
+                }
+            })
+            .get();
+    }
+
+    function getUserPreviewData(username) {
+        var authorization = authenticationData.getAuthorization();
+        return $resource(
+            baseUrl + 'users/' + username + '/preview',
+            null,
+            {
+                'get': {
+                    method: 'GET',
+                    headers: {'Authorization': authorization}
+                }
+            })
+            .get();
+    }
+
     return {
         loginRequest: loginUserRequest,
         registerRequest: registerUserRequest,
@@ -91,6 +119,8 @@ appSocialNetwork.factory('userData', ['$resource', 'baseUrl', 'authenticationDat
         editCurrentUser: editCurrentUser,
         logoutCurrentUser: logoutCurrentUser,
         changeUserPassword: changeUserPassword,
-        searchUsersByName: searchUsersByName
+        searchUsersByName: searchUsersByName,
+        getUserFullData: getUserFullData,
+        getUserPreviewData: getUserPreviewData
     }
 }]);

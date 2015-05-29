@@ -2,7 +2,7 @@
 
 appSocialNetwork.controller('controllerUserHeader',
     ['$scope', '$timeout', '$location', '$route', 'userData', 'authenticationData', 'notificationService',
-        function ($scope, $timeout, $location, $route, userData, authenticationData, notificationService, defaultProfileImageData) {
+        function ($scope, $timeout, $location, $route, userData, authenticationData, notificationService) {
 
             $scope.isActive = function (locationHTML) {
                 return locationHTML === $location.path();
@@ -12,7 +12,6 @@ appSocialNetwork.controller('controllerUserHeader',
             $scope.logout = logout;
             $scope.searchUsers = searchUsers;
             $scope.searchResultsShown = false;
-            $scope.defaultProfileImageData = defaultProfileImageData;
 
             function logout() {
                 userData.logoutCurrentUser()
@@ -28,7 +27,6 @@ appSocialNetwork.controller('controllerUserHeader',
             }
 
             function searchUsers(searchInput) {
-                console.log(11)
                 userData.searchUsersByName(searchInput)
                     .$promise
                     .then(function (data) {

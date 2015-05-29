@@ -52,6 +52,7 @@ var appSocialNetwork = angular
                 //    }
                 //}
             })
+
             .otherwise({
                 redirectTo: '/'
             })

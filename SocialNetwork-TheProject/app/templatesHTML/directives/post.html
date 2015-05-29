@@ -6,7 +6,6 @@
             <div class="panel panel-primary news-feed">
                 <div class="panel-heading">
                     <img src="" ng-src="{{post.author.profileImageData}}" alt="post.author.name" ng-if="post.author.profileImageData"/>
-                    <img src="" ng-src="{{defaultProfileImageData}}" alt="post.author.name" ng-if="!post.author.profileImageData"/>
                     <div class="hover-parent">
                         <a href="#/users/{{post.author.username}}" ng-mouseenter="postUserPreviewShown = showUserPreview(post.author.username)">
                             {{post.author.name}}
@@ -16,7 +15,6 @@
                         <div class="panel panel-success user-hover col-md-8" ng-show="postUserPreviewShown" ng-mouseleave="postUserPreviewShown = false">
                             <div class="panel-heading hover-heading">
                                 <img src="" ng-src="{{post.author.profileImageData}}" alt="post.author.name" ng-if="post.author.profileImageData"/>
-                                <img src="" ng-src="{{defaultProfileImageData}}" alt="post.author.name" ng-if="!post.author.profileImageData"/>
                                 <span>{{post.author.name}}</span>
                             </div>
                             <div class="panel-body">

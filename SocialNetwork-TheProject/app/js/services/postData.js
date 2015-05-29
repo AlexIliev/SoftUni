@@ -4,7 +4,7 @@ appSocialNetwork.factory('postData', ['$resource', 'baseUrl', 'authenticationDat
     function ($resource, baseUrl, authenticationData) {
 
         function getNewsFeed(startPostId, pageSize) {
-        var authorization = credentials.getAuthorization();
+        var authorization = authenticationData.getAuthorization();
         return $resource(
             baseUrl + 'me/feed?StartPostId=' + (startPostId || '') + '&PageSize=' + pageSize,
             null,
@@ -19,7 +19,7 @@ appSocialNetwork.factory('postData', ['$resource', 'baseUrl', 'authenticationDat
     }
 
         function getUserWall(username, startPostId, pageSize) {
-            var authorization = credentials.getAuthorization();
+            var authorization = authenticationData.getAuthorization();
             return $resource(
                 baseUrl + 'users/'+ username + '/wall?StartPostId=' + (startPostId || '') + '&PageSize=' + pageSize,
                 null,
@@ -34,7 +34,7 @@ appSocialNetwork.factory('postData', ['$resource', 'baseUrl', 'authenticationDat
         }
 
         function addPost(post) {
-            var authorization = credentials.getAuthorization();
+            var authorization = authenticationData.getAuthorization();
             return $resource(
                 baseUrl + 'posts',
                 null,
@@ -48,7 +48,7 @@ appSocialNetwork.factory('postData', ['$resource', 'baseUrl', 'authenticationDat
         }
 
         function editPost(postId, postContent) {
-            var authorization = credentials.getAuthorization();
+            var authorization = authenticationData.getAuthorization();
             return $resource(
                 baseUrl + 'posts/' + postId,
                 null,
@@ -62,7 +62,7 @@ appSocialNetwork.factory('postData', ['$resource', 'baseUrl', 'authenticationDat
         }
 
         function deletePost(postId) {
-            var authorization = credentials.getAuthorization();
+            var authorization = authenticationData.getAuthorization();
             return $resource(
                 baseUrl + 'posts/' + postId,
                 null,
@@ -76,7 +76,7 @@ appSocialNetwork.factory('postData', ['$resource', 'baseUrl', 'authenticationDat
         }
 
         function getPostComments(postId) {
-            var authorization = credentials.getAuthorization();
+            var authorization = authenticationData.getAuthorization();
             return $resource(
                 baseUrl + 'posts/' + postId + '/comments',
                 null,
@@ -91,7 +91,7 @@ appSocialNetwork.factory('postData', ['$resource', 'baseUrl', 'authenticationDat
         }
 
         function likePost(postId) {
-            var authorization = credentials.getAuthorization();
+            var authorization = authenticationData.getAuthorization();
             return $resource(
                 baseUrl + 'posts/' + postId + '/likes',
                 null,
@@ -105,7 +105,7 @@ appSocialNetwork.factory('postData', ['$resource', 'baseUrl', 'authenticationDat
         }
 
         function unlikePost(postId) {
-            var authorization = credentials.getAuthorization();
+            var authorization = authenticationData.getAuthorization();
             return $resource(
                 baseUrl + 'posts/' + postId + '/likes',
                 null,
