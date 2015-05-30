@@ -7,7 +7,7 @@
                 <div class="panel-heading">
                     <img src="" ng-src="{{post.author.profileImageData}}" alt="post.author.name" ng-if="post.author.profileImageData"/>
                     <div class="hover-parent">
-                        <a href="#/users/{{post.author.username}}" ng-mouseenter="postUserPreviewShown = showUserPreview(post.author.username)">
+                        <a href="#/users/{{post.author.username}}">
                             {{post.author.name}}
                         </a>
                         <br/>
@@ -59,12 +59,12 @@
                     <img src="" ng-src="{{comment.author.profileImageData}}" alt="post.author.name" ng-if="comment.author.profileImageData"/>
                     <img src="" ng-src="{{defaultProfileImageData}}" alt="post.author.name" ng-if="!post.author.profileImageData"/>
                     <div class="hover-parent">
-                        <a href="#/users/{{comment.author.username}}" ng-mouseenter="commentUserPreviewShown = showUserPreview(comment.author.username)">
+                        <a href="#/users/{{comment.author.username}}">
                             {{comment.author.name}}
                         </a>
                         <br/>
 
-                        <div class="panel panel-success user-hover col-md-8" ng-show="commentUserPreviewShown" ng-mouseleave="commentUserPreviewShown = false">
+                        <div class="panel panel-success user-hover col-md-8" ng-show="commentUserPreviewShown">
                             <div class="panel-heading hover-heading">
                                 <img src="" ng-src="{{comment.author.profileImageData}}" alt="post.author.name" ng-if="comment.author.profileImageData"/>
                                 <img src="" ng-src="{{defaultProfileImageData}}" alt="post.author.name" ng-if="!comment.author.profileImageData"/>

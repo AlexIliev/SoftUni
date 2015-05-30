@@ -1,6 +1,13 @@
-<div class="panel panel-info">
+<div class="panel panel-info" ng-if ="isNewsFeed">
     <div class="panel-body">
         <h3>News feed <i class="icon-large icon-conversation"></i> </h3>
+    </div>
+</div>
+
+<div class="panel panel-info" ng-if ="!isNewsFeed">
+    <div class="panel-body">
+        <h3>{{wallOwnerUsername}} </h3>
+        <button class="btn btn-warning btn-lg {{disabledButton}}" ng-click="sendFriendRequest(userData.username)">{{buttonName}}</button>
     </div>
 </div>
 
