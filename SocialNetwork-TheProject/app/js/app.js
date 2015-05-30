@@ -52,7 +52,17 @@ var appSocialNetwork = angular
                 //    }
                 //}
             })
-
+            .when('/users/:username', {
+                templateUrl: 'templatesHTML/home.html',
+                controller: 'controllerHome'
+                //resolve:{
+                //    isLogged: function($location, $sessionStorage, $localStorage){
+                //        if(!$sessionStorage.authorization && !$localStorage.authorization){
+                //            $location.path('/');
+                //        }
+                //    }
+                //}
+            })
             .otherwise({
                 redirectTo: '/'
             })

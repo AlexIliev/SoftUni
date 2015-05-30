@@ -29,10 +29,6 @@ appSocialNetwork.controller('controllerHome',
                             $scope.wallOwner = $scope.userData.username;
                         }
 
-                        if(!$scope.userData.coverImageData) {
-                            $scope.userData.coverImageData = defaultCoverImageData;
-                        }
-
                         if($scope.userData.isFriend) {
                             $scope.buttonName = 'Friend';
                             $scope.disabledButton = 'disabled';
