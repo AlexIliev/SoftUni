@@ -60,11 +60,14 @@ appSocialNetwork.controller('controllerHome',
                     .then(function (postData) {
                         if(postData.length) {
                             $scope.posts.unshift(postData);
+                            $route.reload();
                         } else {
                             $scope.posts = [];
+                            $route.reload();
                         }
                     }, function (error) {
                         notificationService.error('Submit post is unsuccessful');
+                        $route.reload();
                     });
             }
 
