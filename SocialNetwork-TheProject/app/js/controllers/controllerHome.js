@@ -1,8 +1,8 @@
 'use strict';
 
 appSocialNetwork.controller('controllerHome',
-    ['$scope', '$location', '$route', '$routeParams', 'userData', 'postData', 'friendsData', 'authenticationData', 'notificationService',
-        function ($scope, $location, $route, $routeParams, userData, postData, friendsData, authenticationData, notificationService) {
+    ['$scope', '$location', '$route', '$routeParams', 'userData', 'postData', 'friendsData', 'commentData', 'authenticationData', 'notificationService',
+        function ($scope, $location, $route, $routeParams, userData, postData, friendsData, commentData, authenticationData, notificationService) {
 
 
             var defaultStartPostId = 0,
@@ -17,8 +17,13 @@ appSocialNetwork.controller('controllerHome',
             $scope.deletePost = deletePost;
             $scope.unlikePost = unlikePost;
             $scope.likePost = likePost;
+
             $scope.sendFriendRequest = sendFriendRequest;
             $scope.showUserPreview = showUserPreview;
+
+            $scope.unlikeComment = unlikeComment;
+            $scope.likeComment = likeComment;
+            $scope.deleteComment = deleteComment;
 
             if($scope.isLogged){
                 getPosts();
@@ -149,6 +154,74 @@ appSocialNetwork.controller('controllerHome',
                         }
                     }
                 });
+            }
+
+            function unlikeComment(postId, commentId) {
+                $scope.posts.forEach(function (post) {
+                    if(post.id == postId) {
+                        post.comments.forEach(function (comment) {
+                            if(comment.id == commentId) {
+                                if(post.author.isFriend || post.wallOwner.isFriend || $scope.user.username == post.author.username) {
+                                    commentData.unlikeComment(postId, commentId)
+                                        .$promise
+                                        .then(function (data) {
+                                            comment.liked = false;
+                                            comment.likesCount--;
+                                        }, function (error) {
+                                            notificationService.error('You can`t unlike this comment!', error.data.message);
+                                        });
+                                } else {
+                                    notificationService.error('You can`t unlike this comment!');
+                                }
+                            }
+                        });
+                    }
+                });
+            }
+
+            function likeComment(postId, commentId) {
+                $scope.posts.forEach(function (post) {
+                    if(post.id == postId) {
+                        post.comments.forEach(function (comment) {
+                            if(comment.id == commentId) {
+                                if(post.author.isFriend || post.wallOwner.isFriend || $scope.user.username == post.author.username) {
+                                    commentData.likeComment(postId, commentId)
+                                        .$promise
+                                        .then(function (data) {
+                                            comment.liked = true;
+                                            comment.likesCount++;
+                                        }, function (error) {
+                                            notificationService.error('You can`t like this comment!', error.data.message);
+                                        });
+                                } else {
+                                    notificationService.error('You can`t like this comment!');
+                                }
+                            }
+                        });
+                    }
+                });
+            }
+
+            function deleteComment(postId, commentId) {
+                $scope.posts.forEach(function (post) {
+                    if(post.id == postId) {
+                        post.comments.forEach(function (comment, index, object) {
+                            if(comment.id == commentId) {
+                                if ($scope.user.username == comment.author.username || $scope.user.username == post.author.username) {
+                                    commentData.deleteComment(postId, commentId)
+                                        .$promise
+                                        .then(function (data) {
+                                            post.totalCommentsCount--;
+                                            notificationService.success('Comment deleted successfully.');
+                                            object.splice(index, 1);
+                                        }, function (error) {
+                                            notificationService.error('Error!', error.data.message);
+                                        });
+                                }
+                            }
+                        });
+                    }
+                })
             }
 
             function sendFriendRequest(username) {
