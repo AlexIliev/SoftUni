@@ -1,8 +1,8 @@
 'use strict';
 
 appSocialNetwork.controller('controllerUserHeader',
-    ['$scope', '$timeout', '$location', '$route', 'userData', 'friendsData', 'authenticationData', 'notificationService',
-        function ($scope, $timeout, $location, $route, userData, friendsData, authenticationData, notificationService) {
+    ['$scope', '$routeParams', '$timeout', '$location', '$route', 'userData', 'friendsData', 'authenticationData', 'notificationService',
+        function ($scope, $routeParams, $timeout, $location, $route, userData, friendsData, authenticationData, notificationService) {
 
             $scope.isActive = function (locationHTML) {
                 return locationHTML === $location.path();
@@ -13,6 +13,7 @@ appSocialNetwork.controller('controllerUserHeader',
             $scope.searchUsers = searchUsers;
             $scope.showRequestsDetail = showRequestsDetail;
             $scope.searchResultsShown = false;
+            $scope.wallOwnerUsername = $routeParams.username;
 
             function logout() {
                 userData.logoutCurrentUser()
