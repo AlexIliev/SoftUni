@@ -1,8 +1,8 @@
 'use strict';
 
 appSocialNetwork.controller('controllerUserHeader',
-    ['$scope', '$timeout', '$location', '$route', 'userData', 'authenticationData', 'notificationService',
-        function ($scope, $timeout, $location, $route, userData, authenticationData, notificationService) {
+    ['$scope', '$timeout', '$location', '$route', 'userData', 'friendsData', 'authenticationData', 'notificationService',
+        function ($scope, $timeout, $location, $route, userData, friendsData, authenticationData, notificationService) {
 
             $scope.isActive = function (locationHTML) {
                 return locationHTML === $location.path();
@@ -11,6 +11,7 @@ appSocialNetwork.controller('controllerUserHeader',
             $scope.user = authenticationData.getCurrentUser();
             $scope.logout = logout;
             $scope.searchUsers = searchUsers;
+            $scope.showRequestsDetail = showRequestsDetail;
             $scope.searchResultsShown = false;
 
             function logout() {
@@ -24,6 +25,22 @@ appSocialNetwork.controller('controllerUserHeader',
                         notificationService.error('Logout error!');
                         redirectToHome(2000);
                     })
+            }
+
+            friendsData.getFriendRequests()
+                .$promise
+                .then(function (data) {
+                    $scope.requestsCount = data.length;
+                    $scope.requests = data;
+                }, function (error) {
+                    notificationService.error('Error!', error.data.message);
+                    $route.reload();
+                });
+
+            function showRequestsDetail() {
+                if($scope.requestsCount) {
+                    $scope.requestDetailsShown = true;
+                }
             }
 
             function searchUsers(searchInput) {
